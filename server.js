@@ -13,6 +13,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 // db config
 const db = require("./db");
 
+// check functions
+const check = require("./check");
+
 // set pug as view engine
 app.set("view engine", "pug");
 
@@ -23,7 +26,16 @@ app.get("/", (req, res) => {
 
 // get post requests at /newlink
 app.post("/newlink", (req, res) => {
-	db.add(req.body.url);
+	let url = req.body.url;
+	if (check.url(url) === 2) {
+		res.send("ERROR: Invalid URL");
+	} else {
+		if (check.url(url) === 1) {
+			url = "https://" + url;
+		}
+		db.add(url);
+		res.send(url + " Added succesfully");
+	}
 });
 
 // start server

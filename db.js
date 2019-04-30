@@ -1,5 +1,6 @@
 const low = require("lowdb");
 const FileSync = require("lowdb/adapters/FileSync");
+const shortid = require("shortid");
 
 const adapter = new FileSync("db.json");
 const db = low(adapter);
@@ -11,7 +12,7 @@ db.defaults({ links: [], count: 0 })
 exports.add = function (url) {
 	// add object to links
 	db.get("links")
-		.push({ url: url, timestamp: Date.now(), hits: 0 })
+		.push({ id: shortid.generate(), url: url, timestamp: Date.now(), hits: 0 })
 		.write();
 
 	// update count
