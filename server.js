@@ -11,10 +11,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 // db config
-const db = require("./db");
+const db = require("./includes/db");
 
 // check functions
-const check = require("./check");
+const check = require("./includes/check");
 
 // set pug as view engine
 app.set("view engine", "pug");
