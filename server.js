@@ -38,6 +38,16 @@ app.post("/newlink", (req, res) => {
 	}
 });
 
+// redirect to url by id
+app.get("/:id", (req, res) => {
+	let link = db.getlink(req.params.id);
+	if (link) {
+		res.redirect(link.url);
+	} else {
+		res.send("ERROR: Invalid id");
+	}
+});
+
 // start server
 app.listen(port, () => {
 	console.log("listening on port " + port);

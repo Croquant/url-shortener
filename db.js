@@ -19,3 +19,10 @@ exports.add = function (url) {
 	db.update("count", n => n + 1)
 		.write();
 };
+
+exports.getlink = function (id) {
+	return db.get("links")
+		.find({ id: id })
+		.update("hits", n => n + 1)
+		.write();
+};
