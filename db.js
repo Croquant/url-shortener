@@ -18,6 +18,10 @@ exports.add = function (url) {
 	// update count
 	db.update("count", n => n + 1)
 		.write();
+
+	return db.get("links")
+		.find({ url: url })
+		.value().id;
 };
 
 exports.getlink = function (id) {

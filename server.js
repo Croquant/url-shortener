@@ -33,9 +33,15 @@ app.post("/newlink", (req, res) => {
 		if (check.url(url) === 1) {
 			url = "https://" + url;
 		}
-		db.add(url);
-		res.send(url + " Added succesfully");
+		let id = db.add(url);
+		res.redirect("/yourlink/" + id);
 	}
+});
+
+// Your link page
+app.get("/yourlink/:id", (req,res) => {
+	let link = "/" + db.getlink(req.params.id).id;
+	res.render("yourlink", { title: "Your link", url: link});
 });
 
 // redirect to url by id
