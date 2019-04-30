@@ -1,0 +1,27 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "simple url shortener using express and lowdb",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ".git"
+  },
+  "keywords": [
+    "url",
+    "shortener",
+    "express",
+    "lowdb"
+  ],
+  "author": "Maxime Desmet Vanden Stock",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "lowdb": "^1.0.0",
+    "pug": "^2.0.3",
+    "shortid": "^2.2.14"
+  }
+}
